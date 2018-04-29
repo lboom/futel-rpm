@@ -1,0 +1,29 @@
+---
+- name: yum packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  # TODO: refine this list as needed
+  with_items:
+    - wget
+    - vim-enhanced
+    - git
+    - man
+    - make
+    - automake
+    - libtool
+    - autoconf
+    - gcc
+    - gcc-c++
+    - rpm-build
+    - openssl-devel
+    - zlib-devel
+    - perl
+    - bison
+    - speex-devel
+    - doxygen
+    - glibc-kernheaders
+    - newt-devel
+    - ncurses-devel
+    - libxml2-devel
+    - sqlite-devel
