@@ -1,7 +1,6 @@
 ---
-- hosts: all
+- hosts: rpmbuild
   become: true
   tasks:
     - include: packages.yml
-    # XXX tools will either be replaced or completely reworked
-    #- include: tools.yml
+    - include: rpmbuild_dir.yml

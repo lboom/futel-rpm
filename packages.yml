@@ -3,10 +3,7 @@
   yum:
     name: "{{ item }}"
     state: present
-  # TODO: refine this list as needed
   with_items:
-    - wget
-    - vim-enhanced
     - git
     - man
     - make

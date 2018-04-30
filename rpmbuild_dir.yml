@@ -1,0 +1,33 @@
+---
+- name: rpmbuild directories
+  file:
+    path: "{{ item }}"
+    owner: vagrant
+    group: vagrant
+    state: directory
+  with_items:
+    - /home/vagrant/rpmbuild
+    - /home/vagrant/rpmbuild/BUILD
+    - /home/vagrant/rpmbuild/RPMS
+    - /home/vagrant/rpmbuild/SOURCES
+    - /home/vagrant/rpmbuild/SPECS
+    - /home/vagrant/rpmbuild/SRPMS
+- name: copy build files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: vagrant
+    group: vagrant
+  with_items:
+    - { src: 'src/asterisk.init', dest: '/home/vagrant/rpmbuild/' }
+    - { src: 'src/asterisk.logrotate', dest: '/home/vagrant/rpmbuild/' }
+    - { src: 'src/asterisk.spec', dest: '/home/vagrant/rpmbuild/' }
+    - { src: 'src/asterisk-13-current.tar.gz', dest: '/home/vagrant/rpmbuild/' }
+- name: link source and spec
+  file:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  with_items:
+    - { src: '/home/vagrant/rpmbuild/asterisk-13-current.tar.gz', dest: '/home/vagrant/rpmbuild/SOURCES/asterisk-13-current.tar.gz' }
+    - { src: '/home/vagrant/rpmbuild/asterisk.spec', dest: '/home/vagrant/rpmbuild/SPECS/asterisk.spec' }

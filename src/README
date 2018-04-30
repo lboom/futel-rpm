@@ -1,1 +1,3 @@
-I will be moving this to a newer version of asterisk (15.2.2 is current stable)
+Build asterisk 13 stable RPM
+Before building, grab a copy of the asterisk source:
+	wget wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz
